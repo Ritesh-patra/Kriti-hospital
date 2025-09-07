@@ -1,123 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kriti Hospital - Advanced Eye & Dental Care</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         * {
-            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            overflow-x: hidden;
+        }
+
         .gradient-bg {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
-        
+
         .medical-gradient {
             background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
         }
-        
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
-        }
-        
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .slide-in-left {
-            opacity: 0;
-            transform: translateX(-50px);
-            transition: all 0.8s ease;
-        }
-        
-        .slide-in-left.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        
-        .slide-in-right {
-            opacity: 0;
-            transform: translateX(50px);
-            transition: all 0.8s ease;
-        }
-        
-        .slide-in-right.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        
-        .scale-in {
-            opacity: 0;
-            transform: scale(0.8);
-            transition: all 0.6s ease;
-        }
-        
-        .scale-in.visible {
-            opacity: 1;
-            transform: scale(1);
-        }
-        
-        .floating {
-            animation: floating 3s ease-in-out infinite;
-        }
-        
-        @keyframes floating {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        .pulse-glow {
-            animation: pulse-glow 2s ease-in-out infinite;
-        }
-        
-        @keyframes pulse-glow {
-            0%, 100% { box-shadow: 0 0 20px rgba(79, 172, 254, 0.3); }
-            50% { box-shadow: 0 0 30px rgba(79, 172, 254, 0.6); }
-        }
-        
-        .navbar-scroll {
-            backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, 0.95);
-        }
-        
-        .service-card {
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-        
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
-        
-        .icon-bounce {
-            transition: all 0.3s ease;
-        }
-        
-        .icon-bounce:hover {
-            transform: scale(1.2) rotate(5deg);
-        }
-        
+
         .text-gradient {
             background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        
+
         .btn-hover {
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
         }
-        
+
+        .btn-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
         .btn-hover::before {
             content: '';
             position: absolute;
@@ -128,86 +55,271 @@
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
             transition: left 0.5s;
         }
-        
+
         .btn-hover:hover::before {
             left: 100%;
         }
-        
-        .parallax {
-            background-attachment: fixed;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
+
+        .service-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
         }
-        
-        .counter {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #4facfe;
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
         }
-        
+
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .pulse-slow {
+            animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeIn 1s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            animation: slideInLeft 1s ease forwards;
+        }
+
+        @keyframes slideInLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            animation: slideInRight 1s ease forwards;
+        }
+
+        @keyframes slideInRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.8);
+            animation: scaleIn 0.8s ease forwards;
+        }
+
+        @keyframes scaleIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .icon-bounce {
+            animation: iconBounce 2s ease-in-out infinite;
+        }
+
+        @keyframes iconBounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-5px);
+            }
+        }
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        .hamburger.active .line1 {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .hamburger.active .line2 {
+            opacity: 0;
+        }
+
+        .hamburger.active .line3 {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
         .mobile-menu {
-            transform: translateX(100%);
+            /* Changed from translateX to translateY for top slide animation */
+            transform: translateY(-100%);
             transition: transform 0.3s ease;
         }
-        
+
         .mobile-menu.active {
-            transform: translateX(0);
+            /* Changed to translateY(0) for slide down effect */
+            transform: translateY(0);
         }
-        
+
         .hamburger {
             cursor: pointer;
             transition: all 0.3s ease;
         }
-        
-        .hamburger.active .line1 {
-            transform: rotate(-45deg) translate(-5px, 6px);
+
+        .counter {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #4facfe;
         }
-        
-        .hamburger.active .line2 {
-            opacity: 0;
+
+        .ripple {
+            position: relative;
+            overflow: hidden;
         }
-        
-        .hamburger.active .line3 {
-            transform: rotate(45deg) translate(-5px, -6px);
+
+        .ripple::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
         }
-        
-        .line1, .line2, .line3 {
-            width: 25px;
-            height: 3px;
-            background-color: #333;
-            margin: 5px 0;
-            transition: 0.3s;
+
+        .ripple:active::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        /* Enhanced mobile responsiveness */
+        @media (max-width: 768px) {
+            .mobile-menu {
+                width: 100vw;
+                max-width: 320px;
+            }
+
+            .hero-title {
+                font-size: 2.5rem !important;
+                line-height: 1.2;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem !important;
+            }
+
+            .service-card {
+                margin-bottom: 1rem;
+            }
+
+            .container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem !important;
+            }
+
+            .mobile-menu {
+                width: 100vw;
+                max-width: 280px;
+            }
         }
     </style>
 </head>
-<body class="overflow-x-hidden w-[100vw]">
+
+<body>
     <!-- Navigation -->
-    <nav id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300 py-4">
-        <div class="container mx-auto px-4">
-            <div class="flex justify-between items-center">
+    <nav class="fixed w-full top-0 bg-white/95 backdrop-blur-md shadow-lg z-50">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="flex justify-between items-center py-4">
                 <div class="flex items-center space-x-3">
                     <div class="w-12 h-12 medical-gradient rounded-full flex items-center justify-center">
-                        <i class="fas fa-hospital-alt text-white text-xl"></i>
+                        <i class="fas fa-hospital text-white text-xl"></i>
                     </div>
                     <div>
-                        <h1 class="text-2xl font-bold text-gradient">Kriti Hospital</h1>
-                        <p class="text-sm text-gray-600">Advanced Eye & Dental Care</p>
+                        <h1 class="text-xl font-bold text-gray-800">Kriti Hospital</h1>
+                        <p class="text-xs text-gray-600">Advanced Eye & Dental Care</p>
                     </div>
                 </div>
-                
-                <!-- Desktop Menu -->
+
                 <div class="hidden lg:flex items-center space-x-8">
-                    <a href="#home" class="nav-link text-gray-700 hover:text-blue-500 transition-colors duration-300 font-medium">Home</a>
-                    <a href="#about" class="nav-link text-gray-700 hover:text-blue-500 transition-colors duration-300 font-medium">About</a>
-                    <a href="#services" class="nav-link text-gray-700 hover:text-blue-500 transition-colors duration-300 font-medium">Services</a>
-                    <a href="#why-choose" class="nav-link text-gray-700 hover:text-blue-500 transition-colors duration-300 font-medium">Why Choose Us</a>
-                    <a href="#contact" class="nav-link text-gray-700 hover:text-blue-500 transition-colors duration-300 font-medium">Contact</a>
+                    <a href="#home"
+                        class="nav-link text-gray-700 hover:text-blue-500 transition-colors duration-300 font-medium">Home</a>
+                    <a href="#about"
+                        class="nav-link text-gray-700 hover:text-blue-500 transition-colors duration-300 font-medium">About</a>
+                    <a href="#services"
+                        class="nav-link text-gray-700 hover:text-blue-500 transition-colors duration-300 font-medium">Services</a>
+                    <a href="#why-choose"
+                        class="nav-link text-gray-700 hover:text-blue-500 transition-colors duration-300 font-medium">Why
+                        Choose Us</a>
+                    <a href="#contact"
+                        class="nav-link text-gray-700 hover:text-blue-500 transition-colors duration-300 font-medium">Contact</a>
                     <button class="medical-gradient text-white px-6 py-2 rounded-full btn-hover font-medium">
                         Book Appointment
                     </button>
                 </div>
-                
+
                 <!-- Mobile Menu Button -->
                 <div class="lg:hidden hamburger" onclick="toggleMobileMenu()">
                     <div class="line1"></div>
@@ -216,15 +328,27 @@
                 </div>
             </div>
         </div>
-        
+
+        <!-- Fixed mobile menu width and responsiveness -->
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="mobile-menu fixed top-0 right-0 h-full w-80 bg-white shadow-2xl lg:hidden z-40">
-            <div class="p-6 pt-20">
-                <a href="#home" class="block py-3 text-gray-700 hover:text-blue-500 transition-colors duration-300 font-medium border-b border-gray-100">Home</a>
-                <a href="#about" class="block py-3 text-gray-700 hover:text-blue-500 transition-colors duration-300 font-medium border-b border-gray-100">About</a>
-                <a href="#services" class="block py-3 text-gray-700 hover:text-blue-500 transition-colors duration-300 font-medium border-b border-gray-100">Services</a>
-                <a href="#why-choose" class="block py-3 text-gray-700 hover:text-blue-500 transition-colors duration-300 font-medium border-b border-gray-100">Why Choose Us</a>
-                <a href="#contact" class="block py-3 text-gray-700 hover:text-blue-500 transition-colors duration-300 font-medium border-b border-gray-100">Contact</a>
+        <!-- Updated mobile menu to slide from top instead of right -->
+        <div id="mobile-menu" class="mobile-menu fixed top-0 left-0 w-full bg-white shadow-2xl lg:hidden z-40">
+            <div class="p-4 pt-20">
+                <a href="#home"
+                    class="block py-3 text-gray-700 hover:text-blue-500 transition-colors duration-300 font-medium border-b border-gray-100"
+                    onclick="closeMobileMenu()">Home</a>
+                <a href="#about"
+                    class="block py-3 text-gray-700 hover:text-blue-500 transition-colors duration-300 font-medium border-b border-gray-100"
+                    onclick="closeMobileMenu()">About</a>
+                <a href="#services"
+                    class="block py-3 text-gray-700 hover:text-blue-500 transition-colors duration-300 font-medium border-b border-gray-100"
+                    onclick="closeMobileMenu()">Services</a>
+                <a href="#why-choose"
+                    class="block py-3 text-gray-700 hover:text-blue-500 transition-colors duration-300 font-medium border-b border-gray-100"
+                    onclick="closeMobileMenu()">Why Choose Us</a>
+                <a href="#contact"
+                    class="block py-3 text-gray-700 hover:text-blue-500 transition-colors duration-300 font-medium border-b border-gray-100"
+                    onclick="closeMobileMenu()">Contact</a>
                 <button class="medical-gradient text-white px-6 py-3 rounded-full btn-hover font-medium mt-6 w-full">
                     Book Appointment
                 </button>
@@ -233,269 +357,421 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="min-h-screen w-[100vw] flex items-center gradient-bg relative overflow-hidden">
+    <section id="home" class="min-h-screen flex items-center gradient-bg relative overflow-hidden">
         <div class="absolute inset-0 bg-black opacity-20"></div>
         <div class="container mx-auto px-4 relative z-10">
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <div class="text-white fade-in">
-                    <h1 class="text-5xl lg:text-7xl font-bold mb-6 leading-tight">
-                        Advanced <span class="text-yellow-300">Eye</span> & <span class="text-yellow-300">Dental</span> Care
+            <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+                <div class="text-white fade-in mt-20">
+                    <!-- Added responsive classes for mobile -->
+                    <h1 class="hero-title text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 leading-tight">
+                        Advanced <span class="text-yellow-300">Eye</span> & <span class="text-yellow-300">Dental</span>
+                        Care
                     </h1>
-                    <p class="text-xl mb-8 text-gray-200 leading-relaxed">
-                        Experience world-class medical care with our state-of-the-art facilities and expert healthcare professionals. Your health is our priority.
+                    <p class="hero-subtitle text-lg sm:text-xl mb-8 text-gray-200 leading-relaxed">
+                        Experience world-class medical care with our state-of-the-art facilities and expert healthcare
+                        professionals. Your health is our priority.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <button class="bg-white w-fit text-blue-600 px-8 py-4 rounded-full font-semibold btn-hover text-lg">
+                        <button
+                            class="bg-white text-blue-600 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold btn-hover text-base sm:text-lg">
                             <i class="fas fa-calendar-alt mr-2"></i>Book Appointment
                         </button>
-                        <button class="border-2 w-fit border-white text-white px-8 py-4 rounded-full font-semibold btn-hover text-lg">
+                        <button
+                            class="border-2 border-white text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold btn-hover text-base sm:text-lg">
                             <i class="fas fa-phone mr-2"></i>Call Now
                         </button>
                     </div>
-                </div>
-                <div class="relative slide-in-right">
-                    <div class="floating">
-                        <div class="w-96 h-96 overflow-hidden bg-white bg-opacity-10 rounded-full flex items-center justify-center backdrop-blur-sm">
-                           <img class="w-full h-full object-cover" src="https://i.pinimg.com/1200x/67/f0/77/67f077b9ff93be2eb789dba4c53eae80.jpg" alt="">
+
+                    <div class="mt-12 grid grid-cols-2 sm:grid-cols-3 gap-6 text-center">
+                        <div class="floating">
+                            <div class="text-2xl sm:text-3xl font-bold text-yellow-300">15+</div>
+                            <div class="text-sm text-gray-300">Years Experience</div>
                         </div>
+                        <div class="floating" style="animation-delay: 0.5s;">
+                            <div class="text-2xl sm:text-3xl font-bold text-yellow-300">10K+</div>
+                            <div class="text-sm text-gray-300">Happy Patients</div>
+                        </div>
+                        <div class="floating" style="animation-delay: 1s;">
+                            <div class="text-2xl sm:text-3xl font-bold text-yellow-300">24/7</div>
+                            <div class="text-sm text-gray-300">Emergency Care</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <div class="w-full max-w-md mx-auto">
+                        <img src="/placeholder.svg?height=500&width=500" alt="Kriti Hospital Facility"
+                            class="w-full h-auto rounded-2xl shadow-2xl floating">
+                    </div>
+                    <div
+                        class="absolute -top-4 -right-4 w-20 h-20 medical-gradient rounded-full flex items-center justify-center pulse-slow">
+                        <i class="fas fa-plus text-white text-2xl"></i>
                     </div>
                 </div>
             </div>
         </div>
-        
-        <!-- Floating Elements -->
-        <!-- <div class="absolute top-20 left-10 w-20 h-20 bg-white bg-opacity-10 rounded-full floating" style="animation-delay: 0.5s;"></div>
-        <div class="absolute bottom-20 right-10 w-16 h-16 bg-white bg-opacity-10 rounded-full floating" style="animation-delay: 1s;"></div>
-        <div class="absolute top-1/2 left-20 w-12 h-12 bg-white bg-opacity-10 rounded-full floating" style="animation-delay: 1.5s;"></div> -->
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-20 bg-gray-50">
+    <section id="about" class="py-16 sm:py-20 bg-gray-50">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-16 fade-in">
-                <h2 class="text-4xl lg:text-5xl font-bold text-gray-800 mb-6">About Kriti Hospital</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                    Leading the way in advanced eye and dental care with cutting-edge technology and compassionate healthcare professionals.
-                </p>
-            </div>
-            
-            <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                 <div class="slide-in-left">
-                    <h3 class="text-3xl font-bold text-gray-800 mb-6">Excellence in Healthcare</h3>
-                    <p class="text-gray-600 mb-6 leading-relaxed">
-                        At Kriti Hospital, we combine years of medical expertise with state-of-the-art technology to provide comprehensive eye and dental care. Our commitment to excellence ensures that every patient receives personalized treatment in a comfortable environment.
-                    </p>
-                    <div class="grid grid-cols-2 gap-6 mb-8">
-                        <div class="text-center">
-                            <div class="counter" data-target="5000">0</div>
-                            <p class="text-gray-600 font-medium">Happy Patients</p>
-                        </div>
-                        <div class="text-center">
-                            <div class="counter" data-target="15">0</div>
-                            <p class="text-gray-600 font-medium">Years Experience</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center space-x-4">
-                        <div class="w-16 h-16 medical-gradient rounded-full flex items-center justify-center">
-                            <i class="fas fa-award text-white text-2xl"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-semibold text-gray-800">Certified Excellence</h4>
-                            <p class="text-gray-600">All insurances & TPAs accepted for cashless services</p>
-                        </div>
-                    </div>
+                    <img src="/placeholder.svg?height=400&width=600" alt="About Kriti Hospital"
+                        class="w-full h-auto rounded-2xl shadow-lg">
                 </div>
-                
+
                 <div class="slide-in-right">
-                    <div class="grid grid-cols-2 gap-6">
-                        <div class="bg-white p-6 rounded-2xl shadow-lg service-card">
-                            <div class="w-16 h-16 medical-gradient rounded-full flex items-center justify-center mb-4 icon-bounce">
-                                <i class="fas fa-eye text-white text-2xl"></i>
-                            </div>
-                            <h4 class="font-semibold text-gray-800 mb-2">Eye Care</h4>
-                            <p class="text-gray-600 text-sm">Comprehensive eye examinations and treatments</p>
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-800 mb-6">About Kriti Hospital</h2>
+                    <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                        Kriti Hospital stands as a beacon of excellence in healthcare, specializing in advanced eye and
+                        dental care.
+                        With over 15 years of dedicated service, we have established ourselves as a trusted healthcare
+                        provider
+                        in Secunderabad and surrounding areas.
+                    </p>
+                    <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                        Our state-of-the-art facility combines cutting-edge technology with compassionate care, ensuring
+                        that
+                        every patient receives the highest quality treatment in a comfortable and welcoming environment.
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-6 mb-8">
+                        <div class="text-center p-4 bg-white rounded-xl shadow-md">
+                            <div class="counter text-2xl sm:text-3xl" data-target="15">0</div>
+                            <div class="text-gray-600 font-medium">Years Experience</div>
                         </div>
-                        <div class="bg-white p-6 rounded-2xl shadow-lg service-card">
-                            <div class="w-16 h-16 medical-gradient rounded-full flex items-center justify-center mb-4 icon-bounce">
-                                <i class="fas fa-tooth text-white text-2xl"></i>
-                            </div>
-                            <h4 class="font-semibold text-gray-800 mb-2">Dental Care</h4>
-                            <p class="text-gray-600 text-sm">Advanced dental treatments and cosmetic procedures</p>
-                        </div>
-                        <div class="bg-white p-6 rounded-2xl shadow-lg service-card">
-                            <div class="w-16 h-16 medical-gradient rounded-full flex items-center justify-center mb-4 icon-bounce">
-                                <i class="fas fa-microscope text-white text-2xl"></i>
-                            </div>
-                            <h4 class="font-semibold text-gray-800 mb-2">Advanced Technology</h4>
-                            <p class="text-gray-600 text-sm">Latest medical equipment and techniques</p>
-                        </div>
-                        <div class="bg-white p-6 rounded-2xl shadow-lg service-card">
-                            <div class="w-16 h-16 medical-gradient rounded-full flex items-center justify-center mb-4 icon-bounce">
-                                <i class="fas fa-user-md text-white text-2xl"></i>
-                            </div>
-                            <h4 class="font-semibold text-gray-800 mb-2">Expert Doctors</h4>
-                            <p class="text-gray-600 text-sm">Experienced and qualified medical professionals</p>
+                        <div class="text-center p-4 bg-white rounded-xl shadow-md">
+                            <div class="counter text-2xl sm:text-3xl" data-target="10000">0</div>
+                            <div class="text-gray-600 font-medium">Happy Patients</div>
                         </div>
                     </div>
+
+                    <button
+                        class="medical-gradient text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold btn-hover text-base sm:text-lg">
+                        Learn More About Us
+                    </button>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-20 bg-white">
+    <section id="services" class="py-16 sm:py-20 bg-white">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-16 fade-in">
-                <h2 class="text-4xl lg:text-5xl font-bold text-gray-800 mb-6">Our Services</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            <div class="text-center mb-12 sm:mb-16 fade-in">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-800 mb-6">Our Services</h2>
+                <p class="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
                     Comprehensive healthcare solutions for all your eye and dental needs
                 </p>
             </div>
-            
+
             <!-- Eye Care Services -->
-            <div class="mb-20">
-                <div class="text-center mb-12 slide-in-left">
-                    <h3 class="text-3xl font-bold text-gradient mb-4">Centre of Excellence Eye Care</h3>
+            <div class="mb-16 sm:mb-20">
+                <div class="text-center mb-8 sm:mb-12 slide-in-left">
+                    <h3 class="text-2xl sm:text-3xl font-bold text-gradient mb-4">
+                        Excellence Eye Care
+                    </h3>
                     <div class="w-24 h-1 medical-gradient mx-auto rounded-full"></div>
                 </div>
-                
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <div class="bg-gradient-to-br from-blue-50 to-cyan-50 p-8 rounded-2xl shadow-lg service-card scale-in">
-                        <div class="w-20 h-20 medical-gradient rounded-full flex items-center justify-center mb-6 mx-auto icon-bounce">
-                            <i class="fas fa-eye text-white text-3xl"></i>
+
+                <!-- Wrapper -->
+                <div class="flex overflow-x-auto lg:grid lg:grid-cols-2 gap-6 lg:gap-8 scrollbar-hide pb-4">
+
+                    <!-- Cataract -->
+                    <div
+                        class="min-w-[320px] lg:min-w-0 bg-gradient-to-br from-blue-50 to-cyan-50 p-6 sm:p-8 rounded-2xl shadow-lg service-card flex flex-col sm:flex-row items-center gap-6">
+                        <div class="w-full sm:w-1/2 flex justify-center">
+                            <img src="https://i.pinimg.com/736x/d0/eb/af/d0ebaf9f560722c93be752113a606629.jpg"
+                                alt="Cataract Treatment"
+                                class="w-full h-48 sm:w-40 sm:h-40 rounded-md object-cover object-top shadow-md">
                         </div>
-                        <h4 class="text-xl font-semibold text-gray-800 mb-3 text-center">Cataract</h4>
-                        <p class="text-gray-600 text-center">Advanced cataract surgery with premium IOLs</p>
-                    </div>
-                    
-                    <div class="bg-gradient-to-br from-blue-50 to-cyan-50 p-8 rounded-2xl shadow-lg service-card scale-in" style="animation-delay: 0.1s;">
-                        <div class="w-20 h-20 medical-gradient rounded-full flex items-center justify-center mb-6 mx-auto icon-bounce">
-                            <i class="fas fa-circle text-white text-3xl"></i>
+                        <div class="w-full sm:w-1/2 text-center sm:text-left">
+                            <div
+                                class="w-16 h-16 sm:w-20 sm:h-20 medical-gradient rounded-full flex items-center justify-center mb-4 mx-auto sm:mx-0 icon-bounce">
+                                <i class="fas fa-eye text-white text-2xl sm:text-3xl"></i>
+                            </div>
+                            <h4 class="text-lg sm:text-xl font-semibold text-gray-800 mb-3">Cataract</h4>
+                            <p class="text-sm sm:text-base text-gray-600 leading-relaxed">
+                                Advanced cataract surgery with premium IOLs. Micro-incision techniques for faster
+                                recovery and better vision
+                                outcomes.
+                            </p>
                         </div>
-                        <h4 class="text-xl font-semibold text-gray-800 mb-3 text-center">Glaucoma</h4>
-                        <p class="text-gray-600 text-center">Early detection and treatment of glaucoma</p>
                     </div>
-                    
-                    <div class="bg-gradient-to-br from-blue-50 to-cyan-50 p-8 rounded-2xl shadow-lg service-card scale-in" style="animation-delay: 0.2s;">
-                        <div class="w-20 h-20 medical-gradient rounded-full flex items-center justify-center mb-6 mx-auto icon-bounce">
-                            <i class="fas fa-dot-circle text-white text-3xl"></i>
+
+                    <!-- Glaucoma -->
+                    <div
+                        class="min-w-[320px] lg:min-w-0 bg-gradient-to-br from-blue-50 to-cyan-50 p-6 sm:p-8 rounded-2xl shadow-lg service-card flex flex-col sm:flex-row items-center gap-6">
+                        <div class="w-full sm:w-1/2 flex justify-center">
+                            <img src="https://i.pinimg.com/1200x/3b/b4/01/3bb4017f14215225e7761caa14edbc58.jpg" alt="Glaucoma Treatment"
+                                class="w-full h-48 sm:w-40 sm:h-40 rounded-md object-cover shadow-md">
                         </div>
-                        <h4 class="text-xl font-semibold text-gray-800 mb-3 text-center">Retina</h4>
-                        <p class="text-gray-600 text-center">Comprehensive retinal care and surgery</p>
-                    </div>
-                    
-                    <div class="bg-gradient-to-br from-blue-50 to-cyan-50 p-8 rounded-2xl shadow-lg service-card scale-in" style="animation-delay: 0.3s;">
-                        <div class="w-20 h-20 medical-gradient rounded-full flex items-center justify-center mb-6 mx-auto icon-bounce">
-                            <i class="fas fa-glasses text-white text-3xl"></i>
+                        <div class="w-full sm:w-1/2 text-center sm:text-left">
+                            <div
+                                class="w-16 h-16 sm:w-20 sm:h-20 medical-gradient rounded-full flex items-center justify-center mb-4 mx-auto sm:mx-0 icon-bounce">
+                                <i class="fas fa-circle text-white text-2xl sm:text-3xl"></i>
+                            </div>
+                            <h4 class="text-lg sm:text-xl font-semibold text-gray-800 mb-3">Glaucoma</h4>
+                            <p class="text-sm sm:text-base text-gray-600 leading-relaxed">
+                                Early detection and treatment of glaucoma using advanced diagnostic equipment and laser
+                                therapy options.
+                            </p>
                         </div>
-                        <h4 class="text-xl font-semibold text-gray-800 mb-3 text-center">Cornea & Refractive</h4>
-                        <p class="text-gray-600 text-center">LASIK and corneal treatments</p>
                     </div>
-                    
-                    <div class="bg-gradient-to-br from-blue-50 to-cyan-50 p-8 rounded-2xl shadow-lg service-card scale-in" style="animation-delay: 0.4s;">
-                        <div class="w-20 h-20 medical-gradient rounded-full flex items-center justify-center mb-6 mx-auto icon-bounce">
-                            <i class="fas fa-eye-slash text-white text-3xl"></i>
+
+                    <!-- Retina -->
+                    <div
+                        class="min-w-[320px] lg:min-w-0 bg-gradient-to-br from-blue-50 to-cyan-50 p-6 sm:p-8 rounded-2xl shadow-lg service-card flex flex-col sm:flex-row items-center gap-6">
+                        <div class="w-full sm:w-1/2 flex justify-center">
+                            <img src="https://i.pinimg.com/736x/23/17/23/23172388075cd9ed5c2b8238fd671e19.jpg" alt="Retina Treatment"
+                                class="w-full h-48 sm:w-40 sm:h-40 rounded-md object-cover shadow-md">
                         </div>
-                        <h4 class="text-xl font-semibold text-gray-800 mb-3 text-center">Squint</h4>
-                        <p class="text-gray-600 text-center">Squint correction for all ages</p>
-                    </div>
-                    
-                    <div class="bg-gradient-to-br from-blue-50 to-cyan-50 p-8 rounded-2xl shadow-lg service-card scale-in" style="animation-delay: 0.5s;">
-                        <div class="w-20 h-20 medical-gradient rounded-full flex items-center justify-center mb-6 mx-auto icon-bounce">
-                            <i class="fas fa-brain text-white text-3xl"></i>
+                        <div class="w-full sm:w-1/2 text-center sm:text-left">
+                            <div
+                                class="w-16 h-16 sm:w-20 sm:h-20 medical-gradient rounded-full flex items-center justify-center mb-4 mx-auto sm:mx-0 icon-bounce">
+                                <i class="fas fa-dot-circle text-white text-2xl sm:text-3xl"></i>
+                            </div>
+                            <h4 class="text-lg sm:text-xl font-semibold text-gray-800 mb-3">Retina</h4>
+                            <p class="text-sm sm:text-base text-gray-600 leading-relaxed">
+                                Comprehensive retinal care including diabetic retinopathy, macular degeneration, and
+                                vitreoretinal surgery.
+                            </p>
                         </div>
-                        <h4 class="text-xl font-semibold text-gray-800 mb-3 text-center">Neuro-ophthalmology</h4>
-                        <p class="text-gray-600 text-center">Neurological eye disorders treatment</p>
                     </div>
-                    
-                    <div class="bg-gradient-to-br from-blue-50 to-cyan-50 p-8 rounded-2xl shadow-lg service-card scale-in" style="animation-delay: 0.6s;">
-                        <div class="w-20 h-20 medical-gradient rounded-full flex items-center justify-center mb-6 mx-auto icon-bounce">
-                            <i class="fas fa-sun text-white text-3xl"></i>
+
+                    <!-- Cornea & Refractive -->
+                    <div
+                        class="min-w-[320px] lg:min-w-0 bg-gradient-to-br from-blue-50 to-cyan-50 p-6 sm:p-8 rounded-2xl shadow-lg service-card flex flex-col sm:flex-row items-center gap-6">
+                        <div class="w-full sm:w-1/2 flex justify-center">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeVqrmKp36qAl59CIQCML665rscotmaxSRZA&s alt="LASIK Surgery"
+                                class="w-full h-48 sm:w-40 sm:h-40 rounded-md object-cover shadow-md">
                         </div>
-                        <h4 class="text-xl font-semibold text-gray-800 mb-3 text-center">UVEA</h4>
-                        <p class="text-gray-600 text-center">Uveitis and inflammatory eye diseases</p>
-                    </div>
-                    
-                    <div class="bg-gradient-to-br from-blue-50 to-cyan-50 p-8 rounded-2xl shadow-lg service-card scale-in" style="animation-delay: 0.7s;">
-                        <div class="w-20 h-20 medical-gradient rounded-full flex items-center justify-center mb-6 mx-auto icon-bounce">
-                            <i class="fas fa-glasses text-white text-3xl"></i>
+                        <div class="w-full sm:w-1/2 text-center sm:text-left">
+                            <div
+                                class="w-16 h-16 sm:w-20 sm:h-20 medical-gradient rounded-full flex items-center justify-center mb-4 mx-auto sm:mx-0 icon-bounce">
+                                <i class="fas fa-glasses text-white text-2xl sm:text-3xl"></i>
+                            </div>
+                            <h4 class="text-lg sm:text-xl font-semibold text-gray-800 mb-3">Cornea & Refractive</h4>
+                            <p class="text-sm sm:text-base text-gray-600 leading-relaxed">
+                                LASIK, PRK, and corneal transplant procedures. Freedom from glasses with advanced
+                                refractive surgery.
+                            </p>
                         </div>
-                        <h4 class="text-xl font-semibold text-gray-800 mb-3 text-center">Opticals</h4>
-                        <p class="text-gray-600 text-center">Premium eyewear and contact lenses</p>
                     </div>
+
+                    <!-- Squint -->
+                    <div
+                        class="min-w-[320px] lg:min-w-0 bg-gradient-to-br from-blue-50 to-cyan-50 p-6 sm:p-8 rounded-2xl shadow-lg service-card flex flex-col sm:flex-row items-center gap-6">
+                        <div class="w-full sm:w-1/2 flex justify-center">
+                            <img src="https://i.pinimg.com/1200x/f4/6d/3c/f46d3c499e531d31e0bb0d6828d1a572.jpg" alt="Squint Treatment"
+                                class="w-full h-48 sm:w-40 sm:h-40 rounded-md object-cover shadow-md">
+                        </div>
+                        <div class="w-full sm:w-1/2 text-center sm:text-left">
+                            <div
+                                class="w-16 h-16 sm:w-20 sm:h-20 medical-gradient rounded-full flex items-center justify-center mb-4 mx-auto sm:mx-0 icon-bounce">
+                                <i class="fas fa-eye-slash text-white text-2xl sm:text-3xl"></i>
+                            </div>
+                            <h4 class="text-lg sm:text-xl font-semibold text-gray-800 mb-3">Squint</h4>
+                            <p class="text-sm sm:text-base text-gray-600 leading-relaxed">
+                                Squint correction surgery for children and adults. Restore proper eye alignment and
+                                binocular vision.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Neuro-ophthalmology -->
+                    <div
+                        class="min-w-[320px] lg:min-w-0 bg-gradient-to-br from-blue-50 to-cyan-50 p-6 sm:p-8 rounded-2xl shadow-lg service-card flex flex-col sm:flex-row items-center gap-6">
+                        <div class="w-full sm:w-1/2 flex justify-center">
+                            <img src="https://i.pinimg.com/736x/c7/b7/70/c7b7700be170730f5b10c039575ad55f.jpg" alt="Neuro-ophthalmology"
+                                class="w-full h-48 sm:w-40 sm:h-40 rounded-md object-cover shadow-md">
+                        </div>
+                        <div class="w-full sm:w-1/2 text-center sm:text-left">
+                            <div
+                                class="w-16 h-16 sm:w-20 sm:h-20 medical-gradient rounded-full flex items-center justify-center mb-4 mx-auto sm:mx-0 icon-bounce">
+                                <i class="fas fa-brain text-white text-2xl sm:text-3xl"></i>
+                            </div>
+                            <h4 class="text-lg sm:text-xl font-semibold text-gray-800 mb-3">Neuro-ophthalmology</h4>
+                            <p class="text-sm sm:text-base text-gray-600 leading-relaxed">
+                                Treatment of neurological eye disorders, optic nerve diseases, and vision problems
+                                related to brain conditions.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- UVEA -->
+                    <div
+                        class="min-w-[320px] lg:min-w-0 bg-gradient-to-br from-blue-50 to-cyan-50 p-6 sm:p-8 rounded-2xl shadow-lg service-card flex flex-col sm:flex-row items-center gap-6">
+                        <div class="w-full sm:w-1/2 flex justify-center">
+                            <img src="https://eyemantra.org/wp-content/uploads/2020/09/UVEA-and-Iris-of-an-Eye-min.png" alt="UVEA  "
+                                class="w-full h-48 sm:w-40 sm:h-40 rounded-md object-cover shadow-md">
+                        </div>
+                        <div class="w-full sm:w-1/2 text-center sm:text-left">
+                            <div
+                                class="w-16 h-16 sm:w-20 sm:h-20 medical-gradient rounded-full flex items-center justify-center mb-4 mx-auto sm:mx-0 icon-bounce">
+                                <i class="fas fa-sun text-white text-2xl sm:text-3xl"></i>
+                            </div>
+                            <h4 class="text-lg sm:text-xl font-semibold text-gray-800 mb-3">UVEA</h4>
+                            <p class="text-sm sm:text-base text-gray-600 leading-relaxed">
+                                Specialized treatment for uveitis and inflammatory eye diseases with immunosuppressive
+                                therapy.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Opticals -->
+                    <div
+                        class="min-w-[320px] lg:min-w-0 bg-gradient-to-br from-blue-50 to-cyan-50 p-6 sm:p-8 rounded-2xl shadow-lg service-card flex flex-col sm:flex-row items-center gap-6">
+                        <div class="w-full sm:w-1/2 flex justify-center">
+                            <img src="https://i.pinimg.com/1200x/44/e5/72/44e572d2bfb90700ef7a386ef4170117.jpg" alt="Optical Services"
+                                class="w-full h-48 sm:w-40 sm:h-40 rounded-md object-cover shadow-md">
+                        </div>
+                        <div class="w-full sm:w-1/2 text-center sm:text-left">
+                            <div
+                                class="w-16 h-16 sm:w-20 sm:h-20 medical-gradient rounded-full flex items-center justify-center mb-4 mx-auto sm:mx-0 icon-bounce">
+                                <i class="fas fa-glasses text-white text-2xl sm:text-3xl"></i>
+                            </div>
+                            <h4 class="text-lg sm:text-xl font-semibold text-gray-800 mb-3">Opticals</h4>
+                            <p class="text-sm sm:text-base text-gray-600 leading-relaxed">
+                                Premium eyewear collection, contact lenses, and specialized optical solutions for all
+                                vision needs.
+                            </p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
-            
+
+
+
+
             <!-- Dental Care Services -->
             <div>
-                <div class="text-center mb-12 slide-in-right">
-                    <h3 class="text-3xl font-bold text-gradient mb-4">Centre of Excellence Dental Care</h3>
+                <div class="text-center mb-8 sm:mb-12 slide-in-right">
+                    <h3 class="text-2xl sm:text-3xl font-bold text-gradient mb-4">Centre of Excellence Dental Care</h3>
                     <div class="w-24 h-1 medical-gradient mx-auto rounded-full"></div>
                 </div>
-                
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <div class="bg-gradient-to-br from-green-50 to-teal-50 p-8 rounded-2xl shadow-lg service-card scale-in">
-                        <div class="w-20 h-20 bg-gradient-to-r from-green-400 to-teal-500 rounded-full flex items-center justify-center mb-6 mx-auto icon-bounce">
-                            <i class="fas fa-broom text-white text-3xl"></i>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+                    <div
+                        class="bg-gradient-to-br from-green-50 to-teal-50 p-6 sm:p-8 rounded-2xl shadow-lg service-card scale-in">
+                        <img src="/placeholder.svg?height=80&width=80" alt="Dental Cleaning"
+                            class="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 rounded-full object-cover">
+                        <div
+                            class="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-r from-green-400 to-teal-500 rounded-full flex items-center justify-center mb-4 sm:mb-6 mx-auto icon-bounce">
+                            <i class="fas fa-broom text-white text-2xl sm:text-3xl"></i>
                         </div>
-                        <h4 class="text-xl font-semibold text-gray-800 mb-3 text-center">Cleanings</h4>
-                        <p class="text-gray-600 text-center">Professional dental cleaning and hygiene</p>
+                        <h4 class="text-lg sm:text-xl font-semibold text-gray-800 mb-3 text-center">Cleanings</h4>
+                        <p class="text-sm sm:text-base text-gray-600 text-center leading-relaxed">
+                            Professional dental cleaning, scaling, polishing, and preventive oral hygiene maintenance
+                            programs.
+                        </p>
                     </div>
-                    
-                    <div class="bg-gradient-to-br from-green-50 to-teal-50 p-8 rounded-2xl shadow-lg service-card scale-in" style="animation-delay: 0.1s;">
-                        <div class="w-20 h-20 bg-gradient-to-r from-green-400 to-teal-500 rounded-full flex items-center justify-center mb-6 mx-auto icon-bounce">
-                            <i class="fas fa-tooth text-white text-3xl"></i>
+
+                    <div class="bg-gradient-to-br from-green-50 to-teal-50 p-6 sm:p-8 rounded-2xl shadow-lg service-card scale-in"
+                        style="animation-delay: 0.1s;">
+                        <img src="/placeholder.svg?height=80&width=80" alt="Dental Implants"
+                            class="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 rounded-full object-cover">
+                        <div
+                            class="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-r from-green-400 to-teal-500 rounded-full flex items-center justify-center mb-4 sm:mb-6 mx-auto icon-bounce">
+                            <i class="fas fa-tooth text-white text-2xl sm:text-3xl"></i>
                         </div>
-                        <h4 class="text-xl font-semibold text-gray-800 mb-3 text-center">Dental Implants</h4>
-                        <p class="text-gray-600 text-center">Permanent tooth replacement solutions</p>
+                        <h4 class="text-lg sm:text-xl font-semibold text-gray-800 mb-3 text-center">Dental Implants</h4>
+                        <p class="text-sm sm:text-base text-gray-600 text-center leading-relaxed">
+                            Permanent tooth replacement with titanium implants. Natural-looking and long-lasting
+                            solutions.
+                        </p>
                     </div>
-                    
-                    <div class="bg-gradient-to-br from-green-50 to-teal-50 p-8 rounded-2xl shadow-lg service-card scale-in" style="animation-delay: 0.2s;">
-                        <div class="w-20 h-20 bg-gradient-to-r from-green-400 to-teal-500 rounded-full flex items-center justify-center mb-6 mx-auto icon-bounce">
-                            <i class="fas fa-crown text-white text-3xl"></i>
+
+                    <div class="bg-gradient-to-br from-green-50 to-teal-50 p-6 sm:p-8 rounded-2xl shadow-lg service-card scale-in"
+                        style="animation-delay: 0.2s;">
+                        <img src="/placeholder.svg?height=80&width=80" alt="Crowns & Bridges"
+                            class="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 rounded-full object-cover">
+                        <div
+                            class="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-r from-green-400 to-teal-500 rounded-full flex items-center justify-center mb-4 sm:mb-6 mx-auto icon-bounce">
+                            <i class="fas fa-crown text-white text-2xl sm:text-3xl"></i>
                         </div>
-                        <h4 class="text-xl font-semibold text-gray-800 mb-3 text-center">Crowns & Bridges</h4>
-                        <p class="text-gray-600 text-center">Restorative dental prosthetics</p>
+                        <h4 class="text-lg sm:text-xl font-semibold text-gray-800 mb-3 text-center">Crowns & Bridges
+                        </h4>
+                        <p class="text-sm sm:text-base text-gray-600 text-center leading-relaxed">
+                            High-quality ceramic and zirconia crowns and bridges for damaged or missing teeth
+                            restoration.
+                        </p>
                     </div>
-                    
-                    <div class="bg-gradient-to-br from-green-50 to-teal-50 p-8 rounded-2xl shadow-lg service-card scale-in" style="animation-delay: 0.3s;">
-                        <div class="w-20 h-20 bg-gradient-to-r from-green-400 to-teal-500 rounded-full flex items-center justify-center mb-6 mx-auto icon-bounce">
-                            <i class="fas fa-bed text-white text-3xl"></i>
+
+                    <div class="bg-gradient-to-br from-green-50 to-teal-50 p-6 sm:p-8 rounded-2xl shadow-lg service-card scale-in"
+                        style="animation-delay: 0.3s;">
+                        <img src="/placeholder.svg?height=80&width=80" alt="Sedation Dentistry"
+                            class="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 rounded-full object-cover">
+                        <div
+                            class="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-r from-green-400 to-teal-500 rounded-full flex items-center justify-center mb-4 sm:mb-6 mx-auto icon-bounce">
+                            <i class="fas fa-bed text-white text-2xl sm:text-3xl"></i>
                         </div>
-                        <h4 class="text-xl font-semibold text-gray-800 mb-3 text-center">Sedation Dentistry</h4>
-                        <p class="text-gray-600 text-center">Comfortable, anxiety-free treatments</p>
+                        <h4 class="text-lg sm:text-xl font-semibold text-gray-800 mb-3 text-center">Sedation Dentistry
+                        </h4>
+                        <p class="text-sm sm:text-base text-gray-600 text-center leading-relaxed">
+                            Comfortable, anxiety-free dental treatments with conscious sedation and nitrous oxide
+                            options.
+                        </p>
                     </div>
-                    
-                    <div class="bg-gradient-to-br from-green-50 to-teal-50 p-8 rounded-2xl shadow-lg service-card scale-in" style="animation-delay: 0.4s;">
-                        <div class="w-20 h-20 bg-gradient-to-r from-green-400 to-teal-500 rounded-full flex items-center justify-center mb-6 mx-auto icon-bounce">
-                            <i class="fas fa-fill-drip text-white text-3xl"></i>
+
+                    <div class="bg-gradient-to-br from-green-50 to-teal-50 p-6 sm:p-8 rounded-2xl shadow-lg service-card scale-in"
+                        style="animation-delay: 0.4s;">
+                        <img src="/placeholder.svg?height=80&width=80" alt="Tooth Colored Fillings"
+                            class="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 rounded-full object-cover">
+                        <div
+                            class="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-r from-green-400 to-teal-500 rounded-full flex items-center justify-center mb-4 sm:mb-6 mx-auto icon-bounce">
+                            <i class="fas fa-fill-drip text-white text-2xl sm:text-3xl"></i>
                         </div>
-                        <h4 class="text-xl font-semibold text-gray-800 mb-3 text-center">Tooth Colored Fillings</h4>
-                        <p class="text-gray-600 text-center">Natural-looking composite fillings</p>
+                        <h4 class="text-lg sm:text-xl font-semibold text-gray-800 mb-3 text-center">Tooth Colored
+                            Fillings</h4>
+                        <p class="text-sm sm:text-base text-gray-600 text-center leading-relaxed">
+                            Mercury-free composite fillings that match your natural tooth color for invisible repairs.
+                        </p>
                     </div>
-                    
-                    <div class="bg-gradient-to-br from-green-50 to-teal-50 p-8 rounded-2xl shadow-lg service-card scale-in" style="animation-delay: 0.5s;">
-                        <div class="w-20 h-20 bg-gradient-to-r from-green-400 to-teal-500 rounded-full flex items-center justify-center mb-6 mx-auto icon-bounce">
-                            <i class="fas fa-smile text-white text-3xl"></i>
+
+                    <div class="bg-gradient-to-br from-green-50 to-teal-50 p-6 sm:p-8 rounded-2xl shadow-lg service-card scale-in"
+                        style="animation-delay: 0.5s;">
+                        <img src="/placeholder.svg?height=80&width=80" alt="Cosmetic Dentistry"
+                            class="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 rounded-full object-cover">
+                        <div
+                            class="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-r from-green-400 to-teal-500 rounded-full flex items-center justify-center mb-4 sm:mb-6 mx-auto icon-bounce">
+                            <i class="fas fa-smile text-white text-2xl sm:text-3xl"></i>
                         </div>
-                        <h4 class="text-xl font-semibold text-gray-800 mb-3 text-center">Cosmetic Dentistry</h4>
-                        <p class="text-gray-600 text-center">Smile makeovers and aesthetic treatments</p>
+                        <h4 class="text-lg sm:text-xl font-semibold text-gray-800 mb-3 text-center">Cosmetic Dentistry
+                        </h4>
+                        <p class="text-sm sm:text-base text-gray-600 text-center leading-relaxed">
+                            Complete smile makeovers with veneers, bonding, and aesthetic treatments for perfect smiles.
+                        </p>
                     </div>
-                    
-                    <div class="bg-gradient-to-br from-green-50 to-teal-50 p-8 rounded-2xl shadow-lg service-card scale-in" style="animation-delay: 0.6s;">
-                        <div class="w-20 h-20 bg-gradient-to-r from-green-400 to-teal-500 rounded-full flex items-center justify-center mb-6 mx-auto icon-bounce">
-                            <i class="fas fa-magic text-white text-3xl"></i>
+
+                    <div class="bg-gradient-to-br from-green-50 to-teal-50 p-6 sm:p-8 rounded-2xl shadow-lg service-card scale-in"
+                        style="animation-delay: 0.6s;">
+                        <img src="/placeholder.svg?height=80&width=80" alt="Teeth Whitening"
+                            class="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 rounded-full object-cover">
+                        <div
+                            class="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-r from-green-400 to-teal-500 rounded-full flex items-center justify-center mb-4 sm:mb-6 mx-auto icon-bounce">
+                            <i class="fas fa-magic text-white text-2xl sm:text-3xl"></i>
                         </div>
-                        <h4 class="text-xl font-semibold text-gray-800 mb-3 text-center">Whitening</h4>
-                        <p class="text-gray-600 text-center">Professional teeth whitening treatments</p>
+                        <h4 class="text-lg sm:text-xl font-semibold text-gray-800 mb-3 text-center">Whitening</h4>
+                        <p class="text-sm sm:text-base text-gray-600 text-center leading-relaxed">
+                            Professional in-office and take-home whitening systems for brighter, whiter smiles.
+                        </p>
                     </div>
-                    
-                    <div class="bg-gradient-to-br from-green-50 to-teal-50 p-8 rounded-2xl shadow-lg service-card scale-in" style="animation-delay: 0.7s;">
-                        <div class="w-20 h-20 bg-gradient-to-r from-green-400 to-teal-500 rounded-full flex items-center justify-center mb-6 mx-auto icon-bounce">
-                            <i class="fas fa-tools text-white text-3xl"></i>
+
+                    <div class="bg-gradient-to-br from-green-50 to-teal-50 p-6 sm:p-8 rounded-2xl shadow-lg service-card scale-in"
+                        style="animation-delay: 0.7s;">
+                        <img src="/placeholder.svg?height=80&width=80" alt="Root Canal Treatment"
+                            class="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 rounded-full object-cover">
+                        <div
+                            class="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-r from-green-400 to-teal-500 rounded-full flex items-center justify-center mb-4 sm:mb-6 mx-auto icon-bounce">
+                            <i class="fas fa-tools text-white text-2xl sm:text-3xl"></i>
                         </div>
-                        <h4 class="text-xl font-semibold text-gray-800 mb-3 text-center">Root Canals</h4>
-                        <p class="text-gray-600 text-center">Pain-free endodontic treatments</p>
+                        <h4 class="text-lg sm:text-xl font-semibold text-gray-800 mb-3 text-center">Root Canals</h4>
+                        <p class="text-sm sm:text-base text-gray-600 text-center leading-relaxed">
+                            Pain-free endodontic treatments using advanced rotary techniques and digital imaging.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -503,95 +779,114 @@
     </section>
 
     <!-- Why Choose Us Section -->
-    <section id="why-choose" class="py-20 gradient-bg relative overflow-hidden">
+    <section id="why-choose" class="py-16 sm:py-20 gradient-bg relative overflow-hidden">
         <div class="absolute inset-0 bg-black opacity-20"></div>
         <div class="container mx-auto px-4 relative z-10">
-            <div class="text-center mb-16 fade-in">
-                <h2 class="text-4xl lg:text-5xl font-bold text-white mb-6">Why Choose Kriti Hospital?</h2>
-                <p class="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
+            <div class="text-center mb-12 sm:mb-16 fade-in">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">Why Choose Kriti Hospital?</h2>
+                <p class="text-lg sm:text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
                     Experience the difference with our commitment to excellence and patient-centered care
                 </p>
             </div>
-            
-            <div class="grid lg:grid-cols-3 gap-8">
-                <div class="bg-white bg-opacity-10 backdrop-blur-sm p-8 rounded-2xl service-card slide-in-left">
-                    <div class="w-20 h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-6 icon-bounce">
-                        <i class="fas fa-certificate text-white text-3xl"></i>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                <div class="bg-white bg-opacity-10 backdrop-blur-sm p-6 sm:p-8 rounded-2xl service-card slide-in-left">
+                    <div
+                        class="w-16 h-16 sm:w-20 sm:h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-4 sm:mb-6 icon-bounce">
+                        <i class="fas fa-certificate text-white text-2xl sm:text-3xl"></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-white mb-4">Insurance Accepted</h3>
-                    <p class="text-gray-200 leading-relaxed">All insurances & TPAs are accepted for cashless services, making healthcare accessible and affordable for everyone.</p>
+                    <h3 class="text-xl sm:text-2xl font-bold text-white mb-4">Insurance Accepted</h3>
+                    <p class="text-gray-200 leading-relaxed">All insurances & TPAs are accepted for cashless services,
+                        making healthcare accessible and affordable for everyone.</p>
                 </div>
-                
-                <div class="bg-white bg-opacity-10 backdrop-blur-sm p-8 rounded-2xl service-card fade-in" style="animation-delay: 0.2s;">
-                    <div class="w-20 h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-6 icon-bounce">
-                        <i class="fas fa-clock text-white text-3xl"></i>
+
+                <div class="bg-white bg-opacity-10 backdrop-blur-sm p-6 sm:p-8 rounded-2xl service-card fade-in"
+                    style="animation-delay: 0.2s;">
+                    <div
+                        class="w-16 h-16 sm:w-20 sm:h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-4 sm:mb-6 icon-bounce">
+                        <i class="fas fa-clock text-white text-2xl sm:text-3xl"></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-white mb-4">24/7 Emergency Care</h3>
-                    <p class="text-gray-200 leading-relaxed">Round-the-clock emergency services with experienced medical professionals ready to handle any urgent situation.</p>
+                    <h3 class="text-xl sm:text-2xl font-bold text-white mb-4">24/7 Emergency Care</h3>
+                    <p class="text-gray-200 leading-relaxed">Round-the-clock emergency services with experienced medical
+                        professionals ready to handle any urgent situation.</p>
                 </div>
-                
-                <div class="bg-white bg-opacity-10 backdrop-blur-sm p-8 rounded-2xl service-card slide-in-right">
-                    <div class="w-20 h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-6 icon-bounce">
-                        <i class="fas fa-star text-white text-3xl"></i>
+
+                <div class="bg-white bg-opacity-10 backdrop-blur-sm p-6 sm:p-8 rounded-2xl service-card slide-in-right">
+                    <div
+                        class="w-16 h-16 sm:w-20 sm:h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-4 sm:mb-6 icon-bounce">
+                        <i class="fas fa-star text-white text-2xl sm:text-3xl"></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-white mb-4">Expert Team</h3>
-                    <p class="text-gray-200 leading-relaxed">Highly qualified and experienced doctors with specialized training in their respective fields of expertise.</p>
+                    <h3 class="text-xl sm:text-2xl font-bold text-white mb-4">Expert Team</h3>
+                    <p class="text-gray-200 leading-relaxed">Highly qualified and experienced doctors with specialized
+                        training in their respective fields of expertise.</p>
                 </div>
-                
-                <div class="bg-white bg-opacity-10 backdrop-blur-sm p-8 rounded-2xl service-card slide-in-left" style="animation-delay: 0.4s;">
-                    <div class="w-20 h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-6 icon-bounce">
-                        <i class="fas fa-microscope text-white text-3xl"></i>
+
+                <div class="bg-white bg-opacity-10 backdrop-blur-sm p-6 sm:p-8 rounded-2xl service-card slide-in-left"
+                    style="animation-delay: 0.4s;">
+                    <div
+                        class="w-16 h-16 sm:w-20 sm:h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-4 sm:mb-6 icon-bounce">
+                        <i class="fas fa-microscope text-white text-2xl sm:text-3xl"></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-white mb-4">Advanced Technology</h3>
-                    <p class="text-gray-200 leading-relaxed">State-of-the-art medical equipment and cutting-edge technology for accurate diagnosis and effective treatment.</p>
+                    <h3 class="text-xl sm:text-2xl font-bold text-white mb-4">Advanced Technology</h3>
+                    <p class="text-gray-200 leading-relaxed">State-of-the-art medical equipment and cutting-edge
+                        technology for accurate diagnosis and effective treatment.</p>
                 </div>
-                
-                <div class="bg-white bg-opacity-10 backdrop-blur-sm p-8 rounded-2xl service-card fade-in" style="animation-delay: 0.6s;">
-                    <div class="w-20 h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-6 icon-bounce">
-                        <i class="fas fa-heart text-white text-3xl"></i>
+
+                <div class="bg-white bg-opacity-10 backdrop-blur-sm p-6 sm:p-8 rounded-2xl service-card fade-in"
+                    style="animation-delay: 0.6s;">
+                    <div
+                        class="w-16 h-16 sm:w-20 sm:h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-4 sm:mb-6 icon-bounce">
+                        <i class="fas fa-heart text-white text-2xl sm:text-3xl"></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-white mb-4">Patient-Centered Care</h3>
-                    <p class="text-gray-200 leading-relaxed">Personalized treatment plans tailored to each patient's unique needs and medical history for optimal outcomes.</p>
+                    <h3 class="text-xl sm:text-2xl font-bold text-white mb-4">Patient-Centered Care</h3>
+                    <p class="text-gray-200 leading-relaxed">Personalized treatment plans tailored to each patient's
+                        unique needs and medical history for optimal outcomes.</p>
                 </div>
-                
-                <div class="bg-white bg-opacity-10 backdrop-blur-sm p-8 rounded-2xl service-card slide-in-right" style="animation-delay: 0.8s;">
-                    <div class="w-20 h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-6 icon-bounce">
-                        <i class="fas fa-map-marker-alt text-white text-3xl"></i>
+
+                <div class="bg-white bg-opacity-10 backdrop-blur-sm p-6 sm:p-8 rounded-2xl service-card slide-in-right"
+                    style="animation-delay: 0.8s;">
+                    <div
+                        class="w-16 h-16 sm:w-20 sm:h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-4 sm:mb-6 icon-bounce">
+                        <i class="fas fa-map-marker-alt text-white text-2xl sm:text-3xl"></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-white mb-4">Convenient Location</h3>
-                    <p class="text-gray-200 leading-relaxed">Easily accessible location in Secunderabad with ample parking and public transportation connectivity.</p>
+                    <h3 class="text-xl sm:text-2xl font-bold text-white mb-4">Convenient Location</h3>
+                    <p class="text-gray-200 leading-relaxed">Easily accessible location in Secunderabad with ample
+                        parking and public transportation connectivity.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Map Section -->
-    <section class="py-20 bg-gray-100">
+    <section class="py-16 sm:py-20 bg-gray-100">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-16 fade-in">
-                <h2 class="text-4xl lg:text-5xl font-bold text-gray-800 mb-6">Find Us</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            <div class="text-center mb-12 sm:mb-16 fade-in">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-800 mb-6">Find Us</h2>
+                <p class="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
                     Visit us at our convenient location in Secunderabad
                 </p>
             </div>
-            
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
+
+            <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                 <div class="slide-in-left">
-                    <div class="bg-white p-8 rounded-2xl shadow-lg">
-                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Hospital Address</h3>
+                    <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg">
+                        <h3 class="text-2xl sm:text-3xl font-bold text-gray-800 mb-6">Hospital Address</h3>
                         <div class="space-y-4">
                             <div class="flex items-start space-x-4">
-                                <div class="w-12 h-12 medical-gradient rounded-full flex items-center justify-center flex-shrink-0">
+                                <div
+                                    class="w-10 h-10 sm:w-12 sm:h-12 medical-gradient rounded-full flex items-center justify-center flex-shrink-0">
                                     <i class="fas fa-map-marker-alt text-white"></i>
                                 </div>
                                 <div>
                                     <h4 class="font-semibold text-gray-800">Location</h4>
-                                    <p class="text-gray-600">Shop No. 1 & 2, Plot No. 27 & 28, Kashiram Apartments, Park View Enclave, Hasmathpet Road, Bowenpally, Secunderabad, 500011</p>
+                                    <p class="text-gray-600">Shop No. 1 & 2, Plot No. 27 & 28, Kashiram Apartments, Park
+                                        View Enclave, Hasmathpet Road, Bowenpally, Secunderabad, 500011</p>
                                 </div>
                             </div>
-                            
+
                             <div class="flex items-center space-x-4">
-                                <div class="w-12 h-12 medical-gradient rounded-full flex items-center justify-center">
+                                <div
+                                    class="w-10 h-10 sm:w-12 sm:h-12 medical-gradient rounded-full flex items-center justify-center">
                                     <i class="fas fa-phone text-white"></i>
                                 </div>
                                 <div>
@@ -599,9 +894,10 @@
                                     <p class="text-gray-600">040-42306565</p>
                                 </div>
                             </div>
-                            
+
                             <div class="flex items-center space-x-4">
-                                <div class="w-12 h-12 medical-gradient rounded-full flex items-center justify-center">
+                                <div
+                                    class="w-10 h-10 sm:w-12 sm:h-12 medical-gradient rounded-full flex items-center justify-center">
                                     <i class="fas fa-envelope text-white"></i>
                                 </div>
                                 <div>
@@ -609,9 +905,10 @@
                                     <p class="text-gray-600">info@krutihospital.com</p>
                                 </div>
                             </div>
-                            
+
                             <div class="flex items-center space-x-4">
-                                <div class="w-12 h-12 medical-gradient rounded-full flex items-center justify-center">
+                                <div
+                                    class="w-10 h-10 sm:w-12 sm:h-12 medical-gradient rounded-full flex items-center justify-center">
                                     <i class="fas fa-globe text-white"></i>
                                 </div>
                                 <div>
@@ -622,13 +919,13 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="slide-in-right">
                     <div class="bg-white p-4 rounded-2xl shadow-lg">
-                        <div class="w-full h-96 bg-gray-200 rounded-xl flex items-center justify-center">
+                        <div class="w-full h-80 sm:h-96 bg-gray-200 rounded-xl flex items-center justify-center">
                             <div class="text-center">
-                                <i class="fas fa-map text-6xl text-gray-400 mb-4"></i>
-                                <p class="text-gray-500 text-lg">Interactive Map</p>
+                                <i class="fas fa-map text-5xl sm:text-6xl text-gray-400 mb-4"></i>
+                                <p class="text-gray-500 text-lg sm:text-xl">Interactive Map</p>
                                 <p class="text-gray-400">Kriti Hospital Location</p>
                             </div>
                         </div>
@@ -639,36 +936,43 @@
     </section>
 
     <!-- Contact Form Section -->
-    <section id="contact" class="py-20 bg-white">
+    <section id="contact" class="py-16 sm:py-20 bg-white">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-16 fade-in">
-                <h2 class="text-4xl lg:text-5xl font-bold text-gray-800 mb-6">Book Your Appointment</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            <div class="text-center mb-12 sm:mb-16 fade-in">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-800 mb-6">Book Your Appointment</h2>
+                <p class="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
                     Schedule your consultation with our expert medical professionals
                 </p>
             </div>
-            
+
             <div class="max-w-4xl mx-auto">
-                <form class="bg-gray-50 p-8 lg:p-12 rounded-2xl shadow-lg scale-in">
+                <form class="bg-gray-50 p-6 sm:p-8 lg:p-12 rounded-2xl shadow-lg scale-in">
                     <div class="grid md:grid-cols-2 gap-6 mb-6">
                         <div>
                             <label class="block text-gray-700 font-semibold mb-2">Full Name</label>
-                            <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300" placeholder="Enter your full name">
+                            <input type="text"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                                placeholder="Enter your full name">
                         </div>
                         <div>
                             <label class="block text-gray-700 font-semibold mb-2">Phone Number</label>
-                            <input type="tel" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300" placeholder="Enter your phone number">
+                            <input type="tel"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                                placeholder="Enter your phone number">
                         </div>
                     </div>
-                    
+
                     <div class="grid md:grid-cols-2 gap-6 mb-6">
                         <div>
                             <label class="block text-gray-700 font-semibold mb-2">Email Address</label>
-                            <input type="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300" placeholder="Enter your email">
+                            <input type="email"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                                placeholder="Enter your email">
                         </div>
                         <div>
                             <label class="block text-gray-700 font-semibold mb-2">Service Type</label>
-                            <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300">
+                            <select
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300">
                                 <option>Select Service</option>
                                 <option>Eye Care</option>
                                 <option>Dental Care</option>
@@ -677,15 +981,17 @@
                             </select>
                         </div>
                     </div>
-                    
+
                     <div class="grid md:grid-cols-2 gap-6 mb-6">
                         <div>
                             <label class="block text-gray-700 font-semibold mb-2">Preferred Date</label>
-                            <input type="date" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300">
+                            <input type="date"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300">
                         </div>
                         <div>
                             <label class="block text-gray-700 font-semibold mb-2">Preferred Time</label>
-                            <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300">
+                            <select
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300">
                                 <option>Select Time</option>
                                 <option>9:00 AM - 10:00 AM</option>
                                 <option>10:00 AM - 11:00 AM</option>
@@ -696,14 +1002,17 @@
                             </select>
                         </div>
                     </div>
-                    
+
                     <div class="mb-6">
                         <label class="block text-gray-700 font-semibold mb-2">Message</label>
-                        <textarea rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300" placeholder="Tell us about your symptoms or concerns"></textarea>
+                        <textarea rows="4"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                            placeholder="Tell us about your symptoms or concerns"></textarea>
                     </div>
-                    
+
                     <div class="text-center">
-                        <button type="submit" class="medical-gradient text-white px-12 py-4 rounded-full font-semibold text-lg btn-hover">
+                        <button type="submit"
+                            class="medical-gradient text-white px-8 sm:px-12 py-3 sm:py-4 rounded-full font-semibold text-lg btn-hover">
                             <i class="fas fa-calendar-check mr-2"></i>Book Appointment
                         </button>
                     </div>
@@ -713,69 +1022,88 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-16">
+    <footer class="bg-gray-900 text-white py-12 sm:py-16">
         <div class="container mx-auto px-4">
-            <div class="grid lg:grid-cols-4 gap-8 mb-12">
+            <div class="grid lg:grid-cols-4 gap-8 mb-8 sm:mb-12">
                 <div class="fade-in">
-                    <div class="flex items-center space-x-3 mb-6">
-                        <div class="w-12 h-12 medical-gradient rounded-full flex items-center justify-center">
-                            <i class="fas fa-hospital-alt text-white text-xl"></i>
+                    <div class="flex items-center space-x-3 mb-4 sm:mb-6">
+                        <div
+                            class="w-10 h-10 sm:w-12 sm:h-12 medical-gradient rounded-full flex items-center justify-center">
+                            <i class="fas fa-hospital text-white text-xl"></i>
                         </div>
                         <div>
-                            <h3 class="text-2xl font-bold">Kriti Hospital</h3>
+                            <h3 class="text-xl sm:text-2xl font-bold">Kriti Hospital</h3>
                             <p class="text-gray-400 text-sm">Advanced Eye & Dental Care</p>
                         </div>
                     </div>
-                    <p class="text-gray-400 leading-relaxed mb-6">
-                        Leading healthcare provider specializing in comprehensive eye and dental care with state-of-the-art facilities and expert medical professionals.
+                    <p class="text-gray-400 leading-relaxed mb-4 sm:mb-6">
+                        Leading healthcare provider specializing in comprehensive eye and dental care with
+                        state-of-the-art facilities and expert medical professionals.
                     </p>
                     <div class="flex space-x-4">
-                        <a href="#" class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors duration-300">
+                        <a href="#"
+                            class="w-8 h-8 sm:w-10 sm:h-10 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors duration-300">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 bg-blue-400 rounded-full flex items-center justify-center hover:bg-blue-500 transition-colors duration-300">
+                        <a href="#"
+                            class="w-8 h-8 sm:w-10 sm:h-10 bg-blue-400 rounded-full flex items-center justify-center hover:bg-blue-500 transition-colors duration-300">
                             <i class="fab fa-twitter"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 bg-pink-600 rounded-full flex items-center justify-center hover:bg-pink-700 transition-colors duration-300">
+                        <a href="#"
+                            class="w-8 h-8 sm:w-10 sm:h-10 bg-pink-600 rounded-full flex items-center justify-center hover:bg-pink-700 transition-colors duration-300">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 bg-blue-800 rounded-full flex items-center justify-center hover:bg-blue-900 transition-colors duration-300">
+                        <a href="#"
+                            class="w-8 h-8 sm:w-10 sm:h-10 bg-blue-800 rounded-full flex items-center justify-center hover:bg-blue-900 transition-colors duration-300">
                             <i class="fab fa-linkedin-in"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center hover:bg-green-700 transition-colors duration-300">
+                        <a href="#"
+                            class="w-8 h-8 sm:w-10 sm:h-10 bg-green-600 rounded-full flex items-center justify-center hover:bg-green-700 transition-colors duration-300">
                             <i class="fab fa-whatsapp"></i>
                         </a>
                     </div>
                 </div>
-                
+
                 <div class="slide-in-left">
-                    <h4 class="text-xl font-semibold mb-6">Quick Links</h4>
+                    <h4 class="text-xl font-semibold mb-4 sm:mb-6">Quick Links</h4>
                     <ul class="space-y-3">
-                        <li><a href="#home" class="text-gray-400 hover:text-white transition-colors duration-300">Home</a></li>
-                        <li><a href="#about" class="text-gray-400 hover:text-white transition-colors duration-300">About Us</a></li>
-                        <li><a href="#services" class="text-gray-400 hover:text-white transition-colors duration-300">Services</a></li>
-                        <li><a href="#why-choose" class="text-gray-400 hover:text-white transition-colors duration-300">Why Choose Us</a></li>
-                        <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors duration-300">Contact</a></li>
+                        <li><a href="#home"
+                                class="text-gray-400 hover:text-white transition-colors duration-300">Home</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition-colors duration-300">About
+                                Us</a></li>
+                        <li><a href="#services"
+                                class="text-gray-400 hover:text-white transition-colors duration-300">Services</a></li>
+                        <li><a href="#why-choose"
+                                class="text-gray-400 hover:text-white transition-colors duration-300">Why Choose Us</a>
+                        </li>
+                        <li><a href="#contact"
+                                class="text-gray-400 hover:text-white transition-colors duration-300">Contact</a></li>
                     </ul>
                 </div>
-                
+
                 <div class="slide-in-right">
-                    <h4 class="text-xl font-semibold mb-6">Services</h4>
+                    <h4 class="text-xl font-semibold mb-4 sm:mb-6">Services</h4>
                     <ul class="space-y-3">
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Eye Care</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Dental Care</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Cataract Surgery</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Dental Implants</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Emergency Care</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Eye
+                                Care</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Dental
+                                Care</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Cataract
+                                Surgery</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Dental
+                                Implants</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Emergency
+                                Care</a></li>
                     </ul>
                 </div>
-                
+
                 <div class="fade-in">
-                    <h4 class="text-xl font-semibold mb-6">Contact Info</h4>
+                    <h4 class="text-xl font-semibold mb-4 sm:mb-6">Contact Info</h4>
                     <div class="space-y-4">
                         <div class="flex items-start space-x-3">
                             <i class="fas fa-map-marker-alt text-blue-400 mt-1"></i>
-                            <p class="text-gray-400 text-sm">Shop No. 1 & 2, Plot No. 27 & 28, Kashiram Apartments, Park View Enclave, Hasmathpet Road, Bowenpally, Secunderabad, 500011</p>
+                            <p class="text-gray-400 text-sm">Shop No. 1 & 2, Plot No. 27 & 28, Kashiram Apartments, Park
+                                View Enclave, Hasmathpet Road, Bowenpally, Secunderabad, 500011</p>
                         </div>
                         <div class="flex items-center space-x-3">
                             <i class="fas fa-phone text-blue-400"></i>
@@ -792,16 +1120,20 @@
                     </div>
                 </div>
             </div>
-            
-            <div class="border-t border-gray-800 pt-8">
+
+            <div class="border-t border-gray-800 pt-6 sm:pt-8">
                 <div class="flex flex-col md:flex-row justify-between items-center">
                     <p class="text-gray-400 text-sm mb-4 md:mb-0">
-                        © 2024 Kriti Hospital. All rights reserved. | All Insurances & TPAs accepted for cashless services
+                        © 2024 Kriti Hospital. All rights reserved. | All Insurances & TPAs accepted for cashless
+                        services
                     </p>
                     <div class="flex space-x-6 text-sm">
-                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Privacy Policy</a>
-                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Terms of Service</a>
-                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Cookie Policy</a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Privacy
+                            Policy</a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Terms of
+                            Service</a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Cookie
+                            Policy</a>
                     </div>
                 </div>
             </div>
@@ -809,7 +1141,8 @@
     </footer>
 
     <!-- Back to Top Button -->
-    <button id="backToTop" class="fixed bottom-8 right-8 w-12 h-12 medical-gradient rounded-full flex items-center justify-center text-white shadow-lg opacity-0 invisible transition-all duration-300 hover:scale-110">
+    <button id="backToTop"
+        class="fixed bottom-8 right-8 w-12 h-12 medical-gradient rounded-full flex items-center justify-center text-white shadow-lg opacity-0 invisible transition-all duration-300 hover:scale-110">
         <i class="fas fa-arrow-up"></i>
     </button>
 
@@ -831,14 +1164,14 @@
         });
 
         // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', function () {
+            const navbar = document.querySelector('nav');
             if (window.scrollY > 100) {
-                navbar.classList.add('navbar-scroll');
+                navbar.classList.add('bg-white/95', 'backdrop-blur-md', 'shadow-lg');
             } else {
-                navbar.classList.remove('navbar-scroll');
+                navbar.classList.remove('bg-white/95', 'backdrop-blur-md', 'shadow-lg');
             }
-            
+
             // Back to top button
             const backToTop = document.getElementById('backToTop');
             if (window.scrollY > 500) {
@@ -851,7 +1184,7 @@
         });
 
         // Back to top functionality
-        document.getElementById('backToTop').addEventListener('click', function() {
+        document.getElementById('backToTop').addEventListener('click', function () {
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
@@ -862,7 +1195,7 @@
         function toggleMobileMenu() {
             const mobileMenu = document.getElementById('mobile-menu');
             const hamburger = document.querySelector('.hamburger');
-            
+
             mobileMenu.classList.toggle('active');
             hamburger.classList.toggle('active');
         }
@@ -870,7 +1203,7 @@
         function closeMobileMenu() {
             const mobileMenu = document.getElementById('mobile-menu');
             const hamburger = document.querySelector('.hamburger');
-            
+
             mobileMenu.classList.remove('active');
             hamburger.classList.remove('active');
         }
@@ -881,10 +1214,11 @@
             rootMargin: '0px 0px -50px 0px'
         };
 
-        const observer = new IntersectionObserver(function(entries) {
+        const observer = new IntersectionObserver(function (entries) {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
@@ -897,7 +1231,7 @@
         // Counter animation
         function animateCounter(element, target) {
             let current = 0;
-            const increment = target / 100;
+            const increment = target / 200;
             const timer = setInterval(() => {
                 current += increment;
                 if (current >= target) {
@@ -905,11 +1239,11 @@
                     clearInterval(timer);
                 }
                 element.textContent = Math.floor(current) + '+';
-            }, 20);
+            }, 10);
         }
 
         // Counter observer
-        const counterObserver = new IntersectionObserver(function(entries) {
+        const counterObserver = new IntersectionObserver(function (entries) {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const target = parseInt(entry.target.getAttribute('data-target'));
@@ -924,13 +1258,13 @@
         });
 
         // Form submission
-        document.querySelector('form').addEventListener('submit', function(e) {
+        document.querySelector('form').addEventListener('submit', function (e) {
             e.preventDefault();
-            
+
             // Simple form validation
             const inputs = this.querySelectorAll('input[required], select[required], textarea[required]');
             let isValid = true;
-            
+
             inputs.forEach(input => {
                 if (!input.value.trim()) {
                     isValid = false;
@@ -939,14 +1273,14 @@
                     input.classList.remove('border-red-500');
                 }
             });
-            
+
             if (isValid) {
                 // Simulate form submission
                 const button = this.querySelector('button[type="submit"]');
                 const originalText = button.innerHTML;
                 button.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Booking...';
                 button.disabled = true;
-                
+
                 setTimeout(() => {
                     alert('Appointment booked successfully! We will contact you soon.');
                     this.reset();
@@ -959,7 +1293,7 @@
         });
 
         // Add loading animation to page
-        window.addEventListener('load', function() {
+        window.addEventListener('load', function () {
             document.body.classList.add('loaded');
         });
 
@@ -967,8 +1301,8 @@
         // window.addEventListener('scroll', function() {
         //     const scrolled = window.pageYOffset;
         //     const parallax = document.querySelector('#home');
-        //     const speed = scrolled * 0.5;
-            
+        //     const speed = scrolled * 0.1;
+
         //     if (parallax) {
         //         parallax.style.transform = `translateY(${speed}px)`;
         //     }
@@ -976,31 +1310,31 @@
 
         // Service card hover effects
         document.querySelectorAll('.service-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
+            card.addEventListener('mouseenter', function () {
                 this.style.transform = 'translateY(-10px) scale(1.02)';
             });
-            
-            card.addEventListener('mouseleave', function() {
+
+            card.addEventListener('mouseleave', function () {
                 this.style.transform = 'translateY(0) scale(1)';
             });
         });
 
         // Add ripple effect to buttons
         document.querySelectorAll('.btn-hover').forEach(button => {
-            button.addEventListener('click', function(e) {
+            button.addEventListener('click', function (e) {
                 const ripple = document.createElement('span');
                 const rect = this.getBoundingClientRect();
                 const size = Math.max(rect.width, rect.height);
                 const x = e.clientX - rect.left - size / 2;
                 const y = e.clientY - rect.top - size / 2;
-                
+
                 ripple.style.width = ripple.style.height = size + 'px';
                 ripple.style.left = x + 'px';
                 ripple.style.top = y + 'px';
                 ripple.classList.add('ripple');
-                
+
                 this.appendChild(ripple);
-                
+
                 setTimeout(() => {
                     ripple.remove();
                 }, 600);
@@ -1029,4 +1363,5 @@
         document.head.appendChild(style);
     </script>
 </body>
+
 </html>
